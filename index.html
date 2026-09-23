@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#080b14">
+  <title>Baby Monitor Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <!-- Écran d'accueil -->
+  <div id="home-screen" class="screen">
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    
+    <div class="glass-card">
+      <div class="logo">
+        <span class="logo-icon">🍼</span>
+        <div>
+          <h1 class="title">BabyMonitor</h1>
+          <p class="subtitle">100% Gratuit, Sécurisé P2P</p>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="field-group">
+        <label class="field-label">Code secret de la chambre</label>
+        <input type="text" id="room-id" class="room-input" placeholder="ex: chambre-bebe" autocomplete="off">
+        <p class="field-hint">Utilisez le même code sur le téléphone de la caméra (bébé) et votre téléphone (parent).</p>
+      </div>
+
+      <div class="button-group">
+        <button id="btn-camera" class="btn camera-btn">
+          <span class="btn-icon">📷</span>
+          <span class="btn-text">
+            <strong>Mode Caméra (Bébé)</strong>
+            <small>Laisser ce téléphone près du bébé</small>
+          </span>
+        </button>
+
+        <button id="btn-viewer" class="btn viewer-btn">
+          <span class="btn-icon">📱</span>
+          <span class="btn-text">
+            <strong>Mode Visionneur (Parent)</strong>
+            <small>Regarder en direct depuis n'importe où</small>
+          </span>
+        </button>
+      </div>
+      
+      <div class="features">
+        <div class="feature-badge">🔒 Privé</div>
+        <div class="feature-badge">⚡ Temps Réel</div>
+        <div class="feature-badge">📡 WebRTC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Écran Caméra -->
+  <div id="camera-screen" class="screen hidden">
+    <video id="local-video" autoplay playsinline muted></video>
+    <div class="hud">
+      <div class="live-indicator">
+        <div class="dot red-pulse"></div>
+        <span>EN DIRECT • <span id="cam-room-display"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Écran Visionneur -->
+  <div id="viewer-screen" class="screen hidden">
+    <video id="remote-video" autoplay playsinline></video>
+    <div class="hud">
+      <div class="live-indicator">
+        <div class="dot green-pulse"></div>
+        <span>VISIONNEUR • <span id="view-room-display"></span></span>
+      </div>
+      <button id="btn-fullscreen" class="hud-btn">⛶ Plein Écran</button>
+    </div>
+  </div>
+
+  <!-- Le script Firebase & WebRTC -->
+  <script type="module" src="app.js"></script>
+
+  <!-- Service Worker pour être installable (PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+          console.log('ServiceWorker enregistré');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

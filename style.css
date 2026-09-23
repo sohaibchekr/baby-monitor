@@ -1,0 +1,101 @@
+/* Import de la police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #080b14;
+  color: #fff;
+  overflow: hidden;
+}
+
+.screen {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── UI Accueil (Glassmorphism) ── */
+#home-screen {
+  background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #080b14 60%);
+}
+.bg-glow {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.2;
+}
+.bg-glow-1 { background: #6366f1; width: 400px; height: 400px; top: -100px; left: -100px; }
+.bg-glow-2 { background: #ec4899; width: 300px; height: 300px; bottom: 0; right: 0; }
+
+.glass-card {
+  width: 100%; max-width: 420px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 40px 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.logo { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.logo-icon { font-size: 2.5rem; }
+.title { font-size: 1.8rem; font-weight: 800; color: #a5b4fc; }
+.subtitle { font-size: 0.9rem; color: #94a3b8; }
+.divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 25px; }
+
+.field-group { margin-bottom: 25px; }
+.field-label { display: block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
+.room-input {
+  width: 100%; padding: 15px;
+  background: rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 15px; color: #fff; font-size: 1.1rem; outline: none;
+}
+.room-input:focus { border-color: #6366f1; }
+.field-hint { font-size: 0.8rem; color: #64748b; margin-top: 8px; }
+
+.button-group { display: flex; flex-direction: column; gap: 12px; }
+.btn {
+  display: flex; align-items: center; gap: 15px;
+  padding: 15px 20px; border-radius: 15px; border: none;
+  cursor: pointer; text-align: left; transition: transform 0.2s, filter 0.2s;
+  font-family: inherit;
+}
+.btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.btn-icon { font-size: 1.8rem; }
+.btn-text strong { display: block; font-size: 1.1rem; color: #fff; }
+.btn-text small { color: rgba(255,255,255,0.7); font-size: 0.8rem; }
+.camera-btn { background: linear-gradient(135deg, #4f46e5, #ec4899); }
+.viewer-btn { background: linear-gradient(135deg, #059669, #10b981); }
+
+.features { display: flex; gap: 10px; margin-top: 25px; justify-content: center; }
+.feature-badge { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+
+/* ── UI Caméra & Visionneur ── */
+video {
+  width: 100%; height: 100%; object-fit: cover; background: #000;
+}
+.hud { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 20px; z-index: 10; }
+.live-indicator {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+  padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 0.9rem;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red-pulse { background: #ef4444; animation: pulseRed 1.5s infinite; }
+.green-pulse { background: #10b981; animation: pulseGreen 1.5s infinite; }
+
+.hud-btn {
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  padding: 10px 20px; border-radius: 30px; font-weight: 600; cursor: pointer;
+}
+
+@keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+@keyframes pulseGreen { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }

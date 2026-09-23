@@ -1,0 +1,18 @@
+{
+  "name": "Baby Monitor Pro 👶",
+  "short_name": "BabyMon",
+  "description": "Surveillance vidéo en temps réel via P2P webRTC",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080b14",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍼</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
